@@ -25,6 +25,7 @@ function addDragEventsOnColumn(column) {
          column.addEventListener("dragover", (e) => {
                   e.preventDefault();
          })
+         console.log(test)
          column.addEventListener("drop", (e) => {
                   e.preventDefault();
                   console.log("dropped", DragElement, column);
