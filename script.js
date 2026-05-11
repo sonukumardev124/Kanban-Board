@@ -5,10 +5,10 @@ let draggedItem = null;
 
 console.log(todo, progress, done);
 const tasks = document.querySelectorAll(".task");
-tasks.forEach((task) => {
-  task.addEventListener("drag", (e) => {
-    draggedItem = task;
-  });
+tasks.forEach(task => {
+    task.addEventListener("drag", (e) => {
+        dragElement = task;
+    });
 });
 
 function addDragEventsOnColumn(column) {
@@ -25,8 +25,8 @@ function addDragEventsOnColumn(column) {
     });
     column.addEventListener("drop", (e) => {
         e.preventDefault();
-        console.log("Dropped", draggedItem, column); 
-        column.appendChild(draggedItem);
+        console.log("Dropped", dragElement, column);
+        column.appendChild(dragElement );
         column.classList.remove("hover-over");
     });
 }
@@ -35,8 +35,33 @@ addDragEventsOnColumn(progress);
 addDragEventsOnColumn(done);
 
 // Model related code
-const toggleModelBtn = document.querySelector("#toggle-modal");
+
+const togglaModelBtn = document.querySelector("#toggle-modal");
+const modalbg = document.querySelector(".modal .bg");
 const modal = document.querySelector(".modal");
-toggleModelBtn.addEventListener("click", () => {
+const addTaskBtn = document.querySelector("#add-new-task");
+
+togglaModelBtn.addEventListener("click", () => {
     modal.classList.toggle("active");
 });
+modalbg.addEventListener("click", () => {
+    modal.classList.remove("active");
+});
+
+addTaskBtn.addEventListener("click", () => {
+    const taskTitle = document.querySelector("#task-title-input").value;
+    const taskDesc = document.querySelector("#task-desc-input").value;
+
+    const div = document.createElement("div");
+    div.setAttribute("draggable", "true");
+
+    div.innerHTML = 
+    `<h2>${taskTitle}</h2>
+    <p>${taskDesc}</p>
+    <button>Delete</button>`;
+
+    todo.appendChild(div);
+    modal.classList.remove("active");
+});
+
+// Modal related code
