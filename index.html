@@ -13,38 +13,51 @@
     <main>
         <nav>
             <div class="left">Kanban</div>
-            <div class="right"><button id="toggle-modal">Add new Task</button></div>
+            <div class="right">
+                <button id="toggle-modal">Add new Task</button>
+            </div>
         </nav>
         <section class="board">
+
+            <!-- TODO COLUMN -->
+
             <div id="todo" class="task-column">
-                <div class="tasks-container"></div>
                 <div class="heading">
                     <div class="left">To Do</div>
-                    <div id="todo-counter" class="right">0</div>
+                    <div class="right">Count</div>
                 </div>
                 <div class="tasks-container">
                     <div draggable="true" class="task">
                         <h2>Task 1</h2>
-                        <p>Description for 1</p>
+                        <p>Description for Task 1</p>
                         <button>Delete</button>
                     </div>
                 </div>
-            </div>
+            </div> 
+
+            <!--  PROGRESS COLUMN — todo ke bahar -->
             <div id="progress" class="task-column">
                 <div class="heading">
                     <div class="left">In Progress</div>
-                    <div class="right progress-counter">0</div>
+                    <div class="right">Count</div>
                 </div>
+                <div class="tasks-container"></div> 
             </div>
+
+            <!-- DONE COLUMN — todo ke bahar -->
             <div id="done" class="task-column">
                 <div class="heading">
                     <div class="left">Done</div>
-                    <div class="right done-counter">0</div>
+                    <div class="right">Count</div>
                 </div>
+                <div class="tasks-container"></div>
             </div>
+
         </section>
-        <footer></footer>
+        <footer></footer>  <!-- footer add -->
     </main>
+
+    <!-- Modal use -->
     <div class="modal add-new-task">
         <div class="bg"></div>
         <div class="center">
