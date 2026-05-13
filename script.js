@@ -15,6 +15,11 @@ function addDragEventOnTask(task) {
     });
     task.querySelector("button").addEventListener("click", () => {
         task.remove();
+        [todo, progress, done].forEach(col =>{
+            const tasks = col.querySelectorAll(".task");
+            const count = col.querySelector(".right");
+            count.textContent = tasks.length;    
+        });
     });
 }
 
@@ -37,16 +42,20 @@ function addDragEventsOnColumn(column) {
     column.addEventListener("dragover", (e) => {
         e.preventDefault();
     });
-    column.addEventListener("drop", (e) => {
-        e.preventDefault();
-        if (draggedItem) {
-            const container = column.querySelector(".tasks-container");
-            container.appendChild(draggedItem);
-            column.classList.remove("hover-over");
-        }
-    });
+ column.addEventListener("drop", (e) => {
+    e.preventDefault();
+    console.log("Dropped", draggedItem, column);
+    const container = column.querySelector(".tasks-container");
+    container.appendChild(draggedItem);       
+    column.classList.remove("hover-over");
+    [todo, progress, done].forEach(col =>{
+        const tasks = col.querySelectorAll(".task");
+        const count = col.querySelector(".right");
+        count.textContent = tasks.length;    
+    })
+    draggedItem = null;
+});
 }
-
 addDragEventsOnColumn(todo);
 addDragEventsOnColumn(progress);
 addDragEventsOnColumn(done);
@@ -85,6 +94,11 @@ addTaskBtn.addEventListener("click", () => {
 
     document.querySelector("#todo .tasks-container").appendChild(div);
     modal.classList.remove("active");
+    [todo, progress, done].forEach(col =>{
+        const tasks = col.querySelectorAll(".task");
+        const count = col.querySelector(".right");
+        count.textContent = tasks.length;    
+    });
 
     document.querySelector("#task-title-input").value = "";
     document.querySelector("#task-desc-input").value = "";
