@@ -3,13 +3,13 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 :root {
     --bg-color: rgb(21, 19, 19);
     --bg-task-color: #3e3b3b;
     --bg-button-color: #1a1a1a;
     --primary-text-color: rgb(234, 231, 231);
     --delete-btn: rgba(183, 14, 14, 0.774);
+    --delete-bg-hover: rgba(183, 14, 14, 0.918);
 
     --nav-padding: 15px 30px;
     --section-padding: 15px 30px;
@@ -45,6 +45,8 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
 }
 
 nav button {
@@ -70,6 +72,7 @@ section .task-column {
     display: flex;              
     flex-direction: column;   
     flex-grow: 1;
+    width: 50%;
     padding: var(--padding-m);  
     gap: var(--padding-m);    
     border-radius: var(--border-radius-m);
@@ -112,6 +115,12 @@ section .task-column .task button {
     outline: none;
     background-color: var(--delete-btn);
     color: var(--primary-text-color);
+}
+section .task-column .task button:hover {
+    background-color: var(--delete-bg-hover);
+}
+section .task-column .task button i {
+    font-size: var(--border-radius-xl);
 }
 
 .modal {
